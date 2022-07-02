@@ -10,34 +10,16 @@
         body {
             margin: 0;
         }
-
-
         canvas {
             display: block;
             border: 5px solid red;
             margin-left: 5px;
         }
-
-        
-
-        
-        
-       
-
-        
-     
-   
-    
-        
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    
+
 </head>
 
 <body>
-
-    
-     
 
     <canvas></canvas>
 
@@ -48,32 +30,8 @@
     let canvasBoard = document.querySelector('canvas');
     canvasBoard.height = window.innerHeight - 50;
     canvasBoard.width = window.innerWidth - 25;
-
-    let boardTop = canvasBoard.getBoundingClientRect().top + 5;
-
-    let boardLeft = canvasBoard.getBoundingClientRect().left + 5;
-
     let tool = canvasBoard.getContext('2d');
-    
 
 </script>
-
-<!-- color and Width Change -->
-<script>
-    redColor.addEventListener("click", function () {
-        tool.strokeStyle = "lightpink";
-    })
-    greenColor.addEventListener("click", function () {
-        tool.strokeStyle = "lightgreen";
-    })
-    blueColor.addEventListener("click", function () {
-        tool.strokeStyle = "lightblue";
-    })
-
-    
-</script>
-
-
-
 
 </html>
