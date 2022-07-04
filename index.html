@@ -33,16 +33,13 @@
         }
 
         .color-container {
-            border: 2px solid violet;
+            border: 2px solid gray;
             border-radius:3px;
             width: 180px;
             height:50px;
             display:flex;
             justify-content: space-evenly;
-            align-items:center;
-
-
-          
+            align-items:center;          
         }
         .color{
             height:40px;
@@ -65,11 +62,11 @@
 <body>
     <div class="toolbar">
         <div class="tool" id = "pencil">
-            <img src="../Images/Black_Pencil.svg" alt="" class="tool-image">
+            <img src="Images/Black_Pencil.svg" alt="" class="tool-image">
             
         </div>
         <div class="tool" id = "eraser">
-            <img src="../Images/Eraser.svg" alt="" class="tool-image">
+            <img src="Images/Eraser.svg" alt="" class="tool-image">
             
         </div>
         <div class="tool" id = "rect">
@@ -98,7 +95,102 @@
     canvasBoard.height = window.innerHeight - 50;
     canvasBoard.width = window.innerWidth - 25;
     let tool = canvasBoard.getContext('2d');
+    let boardTop = canvasBoard.getBoundingClientRect().top + 5;
+    let boardLeft = canvasBoard.getBoundingClientRect().left + 5;
+    let recTool = document.querySelector('#rect');
+    let lineTool = document.querySelector('#line');
+    let pencilTool = document.querySelector('#pencil');
+    let eraserTool = document.querySelector('#eraser');
+    let cTool = "pencilTool";
+    let sizes = document.querySelectorAll('.size-box');
+    let red = document.querySelector('.red');
+    let blue = document.querySelector('.blue');
+    let green = document.querySelector('.green');
+    let iX, iY;
+    let drawingMode = false;
+    
 
 </script>
+<!-- Tool Change Logic -->
+<script>
+    recTool.addEventListener("click", function () {
+        
+        cTool = "recTool";
+    })
+    lineTool.addEventListener("click", function () {
+        
+        cTool = "lineTool";
+    })
+    pencilTool.addEventListener("click", function () {
+       
+        cTool = "pencilTool";
+    })
+    eraserTool.addEventListener("click",function(){
+       
+        cTool = "eraseTool";
+    })
+</script>
+<!-- color Change Logic -->
+
+<script>
+    red.addEventListener('click',function(){
+        tool.strokeStyle = "lightpink";
+    })
+    blue.addEventListener('click',function(){
+        tool.strokeStyle = "lightblue";
+    })
+    green.addEventListener('click',function(){
+        tool.strokeStyle = "lightgreen";
+    })
+</script>
+<!-- Draw Logic -->
+
+<script>
+    canvasBoard.addEventListener("mousedown", function (e) {
+
+        if (cTool == 'pencilTool') {
+            drawingMode = true;
+            tool.beginPath();
+            iX = e.clientX - boardLeft;
+            iY = e.clientY - boardTop;
+            tool.moveTo(iX,iY);
+        } else {
+            iX = e.clientX - boardLeft;
+            iY = e.clientY - boardTop;
+        }
+
+    })
+
+    canvasBoard.addEventListener("mouseup", function (e) {
+
+        let fX = e.clientX - boardLeft;
+        let fY = e.clientY - boardTop;
+        let height = fY - iY;
+        let width = fX - iX;
+        if (cTool == 'recTool') {
+            tool.strokeRect(iX, iY, width, height);
+        } else if (cTool == "lineTool") {
+            tool.beginPath();
+            tool.moveTo(iX, iY);
+            tool.lineTo(fX, fY);
+            tool.stroke();
+        } else if (cTool = "pencilTool") {
+            drawingMode = false;
+        }
+    })
+    canvasBoard.addEventListener("mousemove", function (e) {
+        if (drawingMode == false) return;
+        if (cTool == 'pencilTool') {
+            let fX = e.clientX - boardLeft;
+            let fY = e.clientY - boardTop;
+
+            tool.lineTo(fX, fY);
+            tool.stroke();
+
+        }
+    })
+</script>
+
+
 
 </html>
