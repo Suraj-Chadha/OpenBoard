@@ -17,3 +17,8 @@ let green = document.querySelector('.green');
 let black = document.querySelector('.black');
 let iX, iY;
 let drawingMode = false;
+
+let pencilSize = 5;
+let lineSize = 5;
+let eraserSize = 5;
+let rectSize = 5;
