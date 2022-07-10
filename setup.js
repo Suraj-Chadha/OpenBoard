@@ -3,6 +3,7 @@ let canvasBoard = document.querySelector('canvas');
     canvasBoard.width = window.innerWidth - 25;
 let tool = canvasBoard.getContext('2d');
 tool.strokeStyle = "black";
+tool.lineWidth = 5;
 let boardTop = canvasBoard.getBoundingClientRect().top + 5;
 let boardLeft = canvasBoard.getBoundingClientRect().left + 5;
 let recTool = document.querySelector('#rect');
