@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 canvas {
-    display: block;
+    /* display: block; */
     border: 5px solid lightgray;
     margin-left: 5px;
 }
@@ -34,12 +34,22 @@ canvas {
     position:absolute;
     top:2rem;
     left:25vw;
-    display:flex;
+    display:none;
     justify-content: space-evenly;
     align-items:center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
-
+}
+.scale-tools{
+    animation-name: scale-tools;
+    animation-duration:1s;
+}
+@keyframes scale-tools {
+    0%{
+       transform: scale(0.1); 
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 .tool-image {
@@ -110,8 +120,16 @@ canvas {
 .sticky{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width:200px;
-    position: relative;
-    
+    position: absolute;
+    top:15rem;
+    left:10rem;
+}
+.upload{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width:200px;
+    position: absolute;
+    top:15rem;
+    left:80rem;
 }
 .navbar{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -143,4 +161,8 @@ canvas {
     border-top:3px solid gray;
     height:500;
     resize: none;
+}
+.upload-img{
+    height: 100%;
+    width: 100%;
 }

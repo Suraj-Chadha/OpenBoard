@@ -1,5 +1,5 @@
 let canvasBoard = document.querySelector('canvas');
-    canvasBoard.height = window.innerHeight - 50;
+    canvasBoard.height = window.innerHeight -15;
     canvasBoard.width = window.innerWidth - 25;
 let tool = canvasBoard.getContext('2d');
 tool.strokeStyle = "black";
@@ -27,3 +27,14 @@ let lineSize = 5;
 let eraserSize = 5;
 let rectSize = 5;
 
+let optionsCont = document.querySelector(".options-cont");
+let optionsFlag = true;
+let toolbarCont = document.querySelector(".toolbar");
+
+let uploadTool = document.querySelector("#upload");
+let downloadTool = document.querySelector('#download');
+let undoRedoTracker = [];
+let track = 0;
+
+let undo = document.querySelector('#undo');
+let redo = document.querySelector('#redo');

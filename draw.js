@@ -29,6 +29,10 @@ canvasBoard.addEventListener("mouseup", function (e) {
     } else if (cTool == "pencilTool" || cTool == 'eraserTool') {
         drawingMode = false;
     }
+    let url = canvasBoard.toDataURL();
+    undoRedoTracker.push(url);
+    track = undoRedoTracker.length-1;
+    // console.log(undoRedoTracker);
 })
 canvasBoard.addEventListener("mousemove", function (e) {
 

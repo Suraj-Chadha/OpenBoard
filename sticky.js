@@ -8,7 +8,7 @@ sticky.addEventListener("click", function () {
             <div class="minimize"></div>
             <div class="close"></div>
         </div>
-        <textarea name="" id="" cols="30" rows="10" class="textarea"></textarea>`;
+        <textarea spellcheck="false" cols="30" rows="10" class="textarea"></textarea>`;
     body.appendChild(sticky);
 
     let minimize = sticky.querySelector('.minimize');
@@ -27,3 +27,4 @@ sticky.addEventListener("click", function () {
         sticky.remove();
     })
 })
+
