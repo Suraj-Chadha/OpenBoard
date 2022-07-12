@@ -45,25 +45,25 @@ function closeTools() {
 //     }
 // })
 pencilTool.addEventListener("click", function () {
-    if (cTool == "pencilTool") {
-        sizeBoxes[0].style.display = "flex";
-    } else {
+    if (cTool != "pencilTool") {
         cTool = "pencilTool";
-        tool.strokeStyle = "black";
-        tool.lineWidth = pencilSize;
-        sizeBoxes.forEach(sizeBox => sizeBox.style.display = "none");
     }
+    
+    tool.strokeStyle = "black";
+    tool.lineWidth = pencilSize;
+    sizeBoxes.forEach(sizeBox => sizeBox.style.display = "none");
+    sizeBoxes[0].style.display = "flex";
 })
 eraserTool.addEventListener("click", function () {
 
-    if (cTool == "eraserTool") {
-        sizeBoxes[1].style.display = "flex";
-    } else {
+    if (cTool != "eraserTool") {
         cTool = "eraserTool";
-        tool.strokeStyle = "white";
-        tool.lineWidth = eraserSize;
-        sizeBoxes.forEach(sizeBox => sizeBox.style.display = "none");
     }
+
+    tool.strokeStyle = "white";
+    tool.lineWidth = eraserSize;
+    sizeBoxes.forEach(sizeBox => sizeBox.style.display = "none");
+    sizeBoxes[1].style.display = "flex";
 })
 
 // size change
@@ -141,7 +141,7 @@ uploadTool.addEventListener("click", (e) => {
 })
 
 // download tool
-downloadTool.addEventListener("click",(e)=>{
+downloadTool.addEventListener("click", (e) => {
     let url = canvasBoard.toDataURL();
 
     let a = document.createElement("a");
@@ -152,30 +152,30 @@ downloadTool.addEventListener("click",(e)=>{
 
 // undo
 
-undo.addEventListener("click",(e) => {
-  
-    if(track > 0) track--;
+undo.addEventListener("click", (e) => {
+
+    if (track > 0) track--;
     // handleUndoRedo();
     console.log(track);
     let image = new Image();
     image.src = undoRedoTracker[track];
     image.onload = (e) => {
-        tool.drawImage(image,0,0, canvasBoard.width, canvasBoard.height);
+        tool.drawImage(image, 0, 0, canvasBoard.width, canvasBoard.height);
     }
 })
 
-redo.addEventListener("click",(e) => {
-    if(track < undoRedoTracker.length) track++;
+redo.addEventListener("click", (e) => {
+    if (track < undoRedoTracker.length) track++;
     // handleUndoRedo();
     let image = new Image();
     image.src = undoRedoTracker[track];
     image.onload = (e) => {
-        tool.drawImage(image,0,0, canvasBoard.width, canvasBoard.height);
+        tool.drawImage(image, 0, 0, canvasBoard.width, canvasBoard.height);
     }
 })
 
-function handleUndoRedo(){
+function handleUndoRedo() {
     console.log(undoRedoTracker);
-    
+
 
 }
